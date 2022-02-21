@@ -20,13 +20,24 @@ class Article(models.Model):
 
     objects = ArticleManager()
 
+    def get_absolute_url(self):
+        return f"/api/articles/{self.pk}/"
+
+    @property
+    def endpoint(self):
+        return self.get_absolute_url()
+
+    @property
+    def path(self):
+        return f"/articles/{self.pk}/"
+
     def is_public(self):
         if self.publish_date is None:
             return False
         if self.make_public is None:
             return False
         now = timezone.now()
-        is_in_past = now <= self.publish_date
+        is_in_past = now >= self.publish_date
         return is_in_past and self.make_public
 
     def get_tags_list(self):
