@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # internal apps
     'api',
+    'articles',
     'products',
     'search',
 ]
