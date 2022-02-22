@@ -151,6 +151,6 @@ REST_FRAMEWORK = {
 # environment variables -> django-dotenv -> reads .env
 ALGOLIA = {
     'APPLICATION_ID': '4IHLYNCMBJ',
-    'API_KEY': 'ed979c53f86fdc2fe8ba66f0e92b148c',
+    'API_KEY': '4b063049ede11d6f623e7cf47ef6c336',
     'INDEX_PREFIX': 'cfe'
 }
