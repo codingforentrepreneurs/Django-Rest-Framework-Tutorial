@@ -22,9 +22,15 @@ def perform_search(query, **kwargs):
         tags = kwargs.pop("tags") or []
         if len(tags) != 0:
             params['tagFilters'] = tags
-    index_filters = [f"{k}:{v}" for k,v in kwargs.items() if v]
+    # index_filters = [f"{k}:{v}" for k,v in kwargs.items() if v]
+    """
+        when k = public and v = 0 in the GET request, " if v " returns False 
+        and public doesn't add to index_filters for me..
+    """
+    index_filters = [f"{k}:{v}" for k,v in kwargs.items() if 'v']
     if len(index_filters) != 0:
          params['facetFilters'] = index_filters
     print(params)
     results = index.search(query, params)
     return results
+ 
